@@ -3,6 +3,11 @@
 This plugin allows the creation and placement of axis titles. The plugin will throw an error if it is applied to a chart
 that contains no axises, such as a Pie chart.
 
+In order to use it, you will need to include the excellent charting library Chartist.js in your page.
+
+http://gionkunz.github.io/chartist-js/index.html
+
+
 ## Available options and their defaults
 
 ```javascript
