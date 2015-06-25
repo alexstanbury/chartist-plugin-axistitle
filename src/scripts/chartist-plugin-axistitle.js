@@ -21,6 +21,9 @@
         yAxis: axisDefaults
     };
 
+    //as axisX will usually be at the bottom, set it to be below the labels
+    defaultOptions.axisX.offset.y = 40;
+
     Chartist.plugins = Chartist.plugins || {};
     Chartist.plugins.ctAxisTitle = function (options) {
 
