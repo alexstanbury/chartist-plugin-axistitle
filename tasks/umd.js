@@ -12,9 +12,9 @@
 module.exports = function (grunt) {
   return {
     dist: {
-      src: '<%= pkg.config.src %>/scripts/chartist-plugin-pointlabels.js',
-      dest: '<%= pkg.config.dist %>/chartist-plugin-pointlabels.js',
-      objectToExport: 'Chartist.plugins.ctPointLabels',
+      src: '<%= pkg.config.src %>/scripts/chartist-plugin-axistitle.js',
+      dest: '<%= pkg.config.dist %>/chartist-plugin-axistitle.js',
+      objectToExport: 'Chartist.plugins.ctAxisTitle',
       indent: '  '
     }
   };
