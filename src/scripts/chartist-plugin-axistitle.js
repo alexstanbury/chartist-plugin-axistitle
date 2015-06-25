@@ -28,7 +28,6 @@
 
         return function ctAxisTitle(chart) {
 
-
             chart.on('created', function (data) {
 
                 if (!options.axisX.axisTitle && !options.axisY.axisTitle) {
@@ -44,9 +43,14 @@
                 //position axis X title
                 if (options.axisX.axisTitle && data.axisX) {
 
-                    xPos = (data.axisX.axisLength / 2) + data.options.axisX.offset + data.options.chartPadding.left;
+                    xPos = (data.axisX.axisLength / 2) + data.options.axisY.offset + data.options.chartPadding.left;
 
                     yPos = data.options.chartPadding.top;
+
+                    if (data.options.axisY.position === 'end') {
+                        xPos -= data.options.axisY.offset;
+                    }
+
                     if (data.options.axisX.position === 'end') {
                         yPos += data.axisY.axisLength;
                     }
@@ -70,6 +74,11 @@
 
 
                     yPos = (data.axisY.axisLength / 2) + data.options.chartPadding.top;
+
+                    if (data.options.axisX.position === 'start') {
+                        yPos += data.options.axisX.offset;
+                    }
+
                     if (data.options.axisY.position === 'end') {
                         xPos = data.axisX.axisLength;
                     }
@@ -87,6 +96,7 @@
                     });
 
                     data.svg.append(title, true);
+
                 }
 
             });
