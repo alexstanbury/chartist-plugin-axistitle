@@ -20,7 +20,7 @@ var defaultOptions = {
   
   // How much to offset the title by. 
   // Please note, x and y offset values for axisY are flipped due to the rotation of the axisY title by 90 degrees. 
-  // Therefore changing the x value moves up and down the graph, while y value moves left and right.
+  // Therefore changing the x value moves up/down the chart, while changing y moves left/right.
   offset: {x:0, y:0},
   
   // Defines the anchoring of the title text. Possible values are 'start', 'end' and 'middle'.
