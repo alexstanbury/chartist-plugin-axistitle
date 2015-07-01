@@ -18,7 +18,7 @@ var defaultOptions = {
   // One or more class names to be added to the axis title. Multiple class names should be separated by a space.
   axisClass: 'ct-axis-title',
   
-  // How much to offset the title by.
+  // How much to offset the title by. Please note, x and y offset values for axisY are flipped, do to the rotation of the axisY title by 90 degrees. So x values move up and down the graph, while y values move left and right.
   offset: {x:0, y:0},
   
   // Defines the anchoring of the title text. Possible values are 'start', 'end' and 'middle'.
