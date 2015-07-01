@@ -64,7 +64,7 @@ var chart = new Chartist.Line('.ct-chart', {
                             axisClass: 'ct-axis-title',
                             offset: {
                                 x: 0,
-                                y: 0
+                                y: -1
                             },
                             flipTitle: false
                         }
