@@ -10,6 +10,6 @@ describe('ctAxisTitle', function () {
   });
 
   it('should be defined in chartist', function () {
-    expect(window.Chartist.plugins.ctAxisTitle).toBeDefined();
+    expect(window.Chartist.plugins.axisTitle).toBeDefined();
   });
 });
