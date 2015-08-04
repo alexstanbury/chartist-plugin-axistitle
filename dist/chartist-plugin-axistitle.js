@@ -54,11 +54,11 @@
     defaultOptions.axisY.offset.y = -1;
 
     Chartist.plugins = Chartist.plugins || {};
-    Chartist.plugins.title = function (options) {
+    Chartist.plugins.axisTitle = function (options) {
 
         options = Chartist.extend({}, defaultOptions, options);
 
-        return function title(chart) {
+        return function axisTitle(chart) {
 
             chart.on('created', function (data) {
 
