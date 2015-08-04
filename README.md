@@ -13,10 +13,10 @@ http://gionkunz.github.io/chartist-js/index.html
 ```javascript
 var defaultOptions = {
   // The title to be displayed on the axis. If at least one axis title is not supplied then an error is thrown. This can also be a function.
-  axisTitle: '',
+  title: '',
   
   // One or more class names to be added to the axis title. Multiple class names should be separated by a space.
-  axisClass: 'ct-axis-title',
+  className: 'ct-axis-title',
   
   // How much to offset the title by. 
   // Please note, x and y offset values for axisY are flipped due to the rotation of the axisY title by 90 degrees. 
@@ -49,10 +49,10 @@ var chart = new Chartist.Line('.ct-chart', {
                     onlyInteger: true
                 },
                 plugins: [
-                    Chartist.plugins.ctAxisTitle({
+                    Chartist.plugins.axisTitle({
                         axisX: {
-                            axisTitle: 'Time (mins)',
-                            axisClass: 'ct-axis-title',
+                            title: 'Time (mins)',
+                            className: 'ct-axis-title',
                             offset: {
                                 x: 0,
                                 y: 50
@@ -60,8 +60,8 @@ var chart = new Chartist.Line('.ct-chart', {
                             textAnchor: 'middle'
                         },
                         axisY: {
-                            axisTitle: 'Goals',
-                            axisClass: 'ct-axis-title',
+                            title: 'Goals',
+                            className: 'ct-axis-title',
                             offset: {
                                 x: 0,
                                 y: -1
