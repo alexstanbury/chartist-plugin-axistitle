@@ -1,12 +1,12 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
+    // AMD. Register as an anonymous module unless amdModuleId is set
     define([], function () {
-      return (root.returnExportsGlobal = factory());
+      return (root['Chartist.plugins.ctAxisTitle'] = factory());
     });
   } else if (typeof exports === 'object') {
     // Node. Does not work with strict CommonJS, but
-    // only CommonJS-like enviroments that support module.exports,
+    // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory();
   } else {
@@ -14,113 +14,129 @@
   }
 }(this, function () {
 
-  /**
-   * Chartist.js plugin to display a title for 1 or 2 axises.
-   *
-   */
-  /* global Chartist */
-  (function (window, document, Chartist) {
-      'use strict';
+/**
+ * Chartist.js plugin to display a title for 1 or 2 axises.
+ *
+ */
+/* global Chartist */
+(function (window, document, Chartist) {
+    'use strict';
 
-      var axisDefaults = {
-          axisTitle: '',
-          axisClass: 'ct-axis-title',
-          offset: {
-              x: 0,
-              y: 0
-          },
-          textAnchor: 'middle',
-          flipText: false
-      };
-      var defaultOptions = {
-          xAxis: axisDefaults,
-          yAxis: axisDefaults
-      };
+    var axisDefaults = {
+        axisTitle: '',
+        axisClass: 'ct-axis-title',
+        offset: {
+            x: 0,
+            y: 0
+        },
+        textAnchor: 'middle',
+        flipText: false
+    };
 
-      Chartist.plugins = Chartist.plugins || {};
-      Chartist.plugins.ctAxisTitle = function (options) {
+    var defaultOptions = {
+        axisX:  Chartist.extend({}, axisDefaults),
+        axisY:  Chartist.extend({}, axisDefaults)
+    };
 
-          options = Chartist.extend({}, defaultOptions, options);
+    function getTitle(title) {
+        if (title instanceof Function) {
+            return title();
+        }
 
-          return function ctAxisTitle(chart) {
+        return title;
+    }
 
-              chart.on('created', function (data) {
+    //as axisX will usually be at the bottom, set it to be below the labels
+    defaultOptions.axisX.offset.y = 40;
 
-                  if (!options.axisX.axisTitle && !options.axisY.axisTitle) {
-                      throw new Error('ctAxisTitle plugin - You must provide at least one axis title');
-                  } else if (!data.axisX && !data.axisY) {
-                      throw new Error('ctAxisTitle plugin can only be used on charts that have at least one axis');
-                  }
+    //this will stop the title text being slightly cut off at the bottom.
+    //TODO - implement a cleaner fix.
+    defaultOptions.axisY.offset.y = -1;
 
-                  var xPos;
-                  var yPos;
-                  var title;
+    Chartist.plugins = Chartist.plugins || {};
+    Chartist.plugins.ctAxisTitle = function (options) {
 
-                  //position axis X title
-                  if (options.axisX.axisTitle && data.axisX) {
+        options = Chartist.extend({}, defaultOptions, options);
 
-                      xPos = (data.axisX.axisLength / 2) + data.options.axisY.offset + data.options.chartPadding.left;
+        return function ctAxisTitle(chart) {
 
-                      yPos = data.options.chartPadding.top;
+            chart.on('created', function (data) {
 
-                      if (data.options.axisY.position === 'end') {
-                          xPos -= data.options.axisY.offset;
-                      }
+                if (!options.axisX.axisTitle && !options.axisY.axisTitle) {
+                    throw new Error('ctAxisTitle plugin - You must provide at least one axis title');
+                } else if (!data.axisX && !data.axisY) {
+                    throw new Error('ctAxisTitle plugin can only be used on charts that have at least one axis');
+                }
 
-                      if (data.options.axisX.position === 'end') {
-                          yPos += data.axisY.axisLength;
-                      }
+                var xPos;
+                var yPos;
+                var title;
 
-                      title = new Chartist.Svg("text");
-                      title.addClass(options.axisX.axisClass);
-                      title.text(options.axisX.axisTitle);
-                      title.attr({
-                          x: xPos + options.axisX.offset.x,
-                          y: yPos + options.axisX.offset.y,
-                          "text-anchor": options.axisX.textAnchor
-                      });
+                //position axis X title
+                if (options.axisX.axisTitle && data.axisX) {
 
-                      data.svg.append(title, true);
+                    xPos = (data.axisX.axisLength / 2) + data.options.axisY.offset + data.options.chartPadding.left;
 
-                  }
+                    yPos = data.options.chartPadding.top;
 
-                  //position axis Y title
-                  if (options.axisY.axisTitle && data.axisY) {
-                      xPos = 0;
+                    if (data.options.axisY.position === 'end') {
+                        xPos -= data.options.axisY.offset;
+                    }
+
+                    if (data.options.axisX.position === 'end') {
+                        yPos += data.axisY.axisLength;
+                    }
+
+                    title = new Chartist.Svg("text");
+                    title.addClass(options.axisX.axisClass);
+                    title.text(getTitle(options.axisX.axisTitle));
+                    title.attr({
+                        x: xPos + options.axisX.offset.x,
+                        y: yPos + options.axisX.offset.y,
+                        "text-anchor": options.axisX.textAnchor
+                    });
+
+                    data.svg.append(title, true);
+
+                }
+
+                //position axis Y title
+                if (options.axisY.axisTitle && data.axisY) {
+                    xPos = 0;
 
 
-                      yPos = (data.axisY.axisLength / 2) + data.options.chartPadding.top;
+                    yPos = (data.axisY.axisLength / 2) + data.options.chartPadding.top;
 
-                      if (data.options.axisX.position === 'start') {
-                          yPos += data.options.axisX.offset;
-                      }
+                    if (data.options.axisX.position === 'start') {
+                        yPos += data.options.axisX.offset;
+                    }
 
-                      if (data.options.axisY.position === 'end') {
-                          xPos = data.axisX.axisLength;
-                      }
+                    if (data.options.axisY.position === 'end') {
+                        xPos = data.axisX.axisLength;
+                    }
 
-                      var transform = 'rotate(' + (options.axisY.flipTitle ? -90 : 90) + ', ' + xPos + ', ' + yPos + ')';
+                    var transform = 'rotate(' + (options.axisY.flipTitle ? -90 : 90) + ', ' + xPos + ', ' + yPos + ')';
 
-                      title = new Chartist.Svg("text");
-                      title.addClass(options.axisY.axisClass);
-                      title.text(options.axisY.axisTitle);
-                      title.attr({
-                          x: xPos + options.axisY.offset.x,
-                          y: yPos + options.axisY.offset.y,
-                          transform: transform,
-                          "text-anchor": options.axisY.textAnchor
-                      });
+                    title = new Chartist.Svg("text");
+                    title.addClass(options.axisY.axisClass);
+                    title.text(getTitle(options.axisY.axisTitle));
+                    title.attr({
+                        x: xPos + options.axisY.offset.x,
+                        y: yPos + options.axisY.offset.y,
+                        transform: transform,
+                        "text-anchor": options.axisY.textAnchor
+                    });
 
-                      data.svg.append(title, true);
+                    data.svg.append(title, true);
 
-                  }
+                }
 
-              });
-          };
-      };
+            });
+        };
+    };
 
-  }(window, document, Chartist));
+}(window, document, Chartist));
 
-  return Chartist.plugins.ctAxisTitle;
+return Chartist.plugins.ctAxisTitle;
 
 }));
