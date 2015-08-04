@@ -16,15 +16,23 @@
         textAnchor: 'middle',
         flipText: false
     };
-    
+
     var defaultOptions = {
         axisX:  Chartist.extend({}, axisDefaults),
         axisY:  Chartist.extend({}, axisDefaults)
     };
 
+    function getTitle(title) {
+        if (title instanceof Function) {
+            return title();
+        }
+
+        return title;
+    }
+
     //as axisX will usually be at the bottom, set it to be below the labels
     defaultOptions.axisX.offset.y = 40;
-    
+
     //this will stop the title text being slightly cut off at the bottom.
     //TODO - implement a cleaner fix.
     defaultOptions.axisY.offset.y = -1;
@@ -65,7 +73,7 @@
 
                     title = new Chartist.Svg("text");
                     title.addClass(options.axisX.axisClass);
-                    title.text(options.axisX.axisTitle);
+                    title.text(getTitle(options.axisX.axisTitle));
                     title.attr({
                         x: xPos + options.axisX.offset.x,
                         y: yPos + options.axisX.offset.y,
@@ -95,7 +103,7 @@
 
                     title = new Chartist.Svg("text");
                     title.addClass(options.axisY.axisClass);
-                    title.text(options.axisY.axisTitle);
+                    title.text(getTitle(options.axisY.axisTitle));
                     title.attr({
                         x: xPos + options.axisY.offset.x,
                         y: yPos + options.axisY.offset.y,

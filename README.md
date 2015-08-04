@@ -12,7 +12,7 @@ http://gionkunz.github.io/chartist-js/index.html
 
 ```javascript
 var defaultOptions = {
-  // The title to be displayed on the axis. If at least one axis title is not supplied then an error is thrown.
+  // The title to be displayed on the axis. If at least one axis title is not supplied then an error is thrown. This can also be a function.
   axisTitle: '',
   
   // One or more class names to be added to the axis title. Multiple class names should be separated by a space.
