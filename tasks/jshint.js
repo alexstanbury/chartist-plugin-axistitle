@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     all: [
       'Gruntfile.js',
       '<%= pkg.config.src %>/{,*/}*.js',
-      '<%= pkg.config.site %>/scripts/{,*/}*.js'
+      '<%= pkg.config.site %>/{,*/}*.js'
     ],
     test: {
       options: {
