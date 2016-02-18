@@ -16,7 +16,7 @@
         textAnchor: 'middle',
         flipText: false
     };
-    
+
     var defaultOptions = {
         axisX:  Chartist.extend({}, axisDefaults),
         axisY:  Chartist.extend({}, axisDefaults)
@@ -24,7 +24,7 @@
 
     //as axisX will usually be at the bottom, set it to be below the labels
     defaultOptions.axisX.offset.y = 40;
-    
+
     //this will stop the title text being slightly cut off at the bottom.
     //TODO - implement a cleaner fix.
     defaultOptions.axisY.offset.y = -1;
@@ -63,13 +63,13 @@
                         yPos += data.axisY.axisLength;
                     }
 
-                    title = new Chartist.Svg("text");
+                    title = new Chartist.Svg('text');
                     title.addClass(options.axisX.axisClass);
                     title.text(options.axisX.axisTitle);
                     title.attr({
                         x: xPos + options.axisX.offset.x,
                         y: yPos + options.axisX.offset.y,
-                        "text-anchor": options.axisX.textAnchor
+                        'text-anchor': options.axisX.textAnchor
                     });
 
                     data.svg.append(title, true);
@@ -93,14 +93,14 @@
 
                     var transform = 'rotate(' + (options.axisY.flipTitle ? -90 : 90) + ', ' + xPos + ', ' + yPos + ')';
 
-                    title = new Chartist.Svg("text");
+                    title = new Chartist.Svg('text');
                     title.addClass(options.axisY.axisClass);
                     title.text(options.axisY.axisTitle);
                     title.attr({
                         x: xPos + options.axisY.offset.x,
                         y: yPos + options.axisY.offset.y,
                         transform: transform,
-                        "text-anchor": options.axisY.textAnchor
+                        'text-anchor': options.axisY.textAnchor
                     });
 
                     data.svg.append(title, true);
