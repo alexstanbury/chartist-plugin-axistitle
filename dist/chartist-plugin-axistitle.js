@@ -1,18 +1,18 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([], function () {
-      return (root.returnExportsGlobal = factory());
+    define(["chartist"], function (Chartist) {
+      return (root.returnExportsGlobal = factory(Chartist));
     });
   } else if (typeof exports === 'object') {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like enviroments that support module.exports,
     // like Node.
-    module.exports = factory();
+    module.exports = factory(require("chartist"));
   } else {
-    root['Chartist.plugins.ctAxisTitle'] = factory();
+    root['Chartist.plugins.ctAxisTitle'] = factory(root.Chartist);
   }
-}(this, function () {
+}(this, function (Chartist) {
 
   /**
    * Chartist.js plugin to display a title for 1 or 2 axises.
@@ -32,10 +32,18 @@
           textAnchor: 'middle',
           flipText: false
       };
+
       var defaultOptions = {
-          xAxis: axisDefaults,
-          yAxis: axisDefaults
+          axisX:  Chartist.extend({}, axisDefaults),
+          axisY:  Chartist.extend({}, axisDefaults)
       };
+
+      //as axisX will usually be at the bottom, set it to be below the labels
+      defaultOptions.axisX.offset.y = 40;
+
+      //this will stop the title text being slightly cut off at the bottom.
+      //TODO - implement a cleaner fix.
+      defaultOptions.axisY.offset.y = -1;
 
       Chartist.plugins = Chartist.plugins || {};
       Chartist.plugins.ctAxisTitle = function (options) {
