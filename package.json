@@ -25,7 +25,7 @@
   "browser": "dist/chartist-plugin-axistitle.js",
   "licenses": [
     {
-      "type": "WTFPL",
+      "type": "MIT",
       "url": "https://github.com/alexstanbury/chartist-plugin-axistitle/blob/master/LICENSE"
     }
   ],
