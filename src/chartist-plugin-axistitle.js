@@ -7,8 +7,8 @@
     'use strict';
 
     var axisDefaults = {
-        axisTitle: '',
-        axisClass: 'ct-axis-title',
+        title: '',
+        className: 'ct-axis-title',
         offset: {
             x: 0,
             y: 0
@@ -16,32 +16,40 @@
         textAnchor: 'middle',
         flipText: false
     };
-    
+
     var defaultOptions = {
         axisX:  Chartist.extend({}, axisDefaults),
         axisY:  Chartist.extend({}, axisDefaults)
     };
 
+    function getTitle(title) {
+        if (title instanceof Function) {
+            return title();
+        }
+
+        return title;
+    }
+
     //as axisX will usually be at the bottom, set it to be below the labels
     defaultOptions.axisX.offset.y = 40;
-    
+
     //this will stop the title text being slightly cut off at the bottom.
     //TODO - implement a cleaner fix.
     defaultOptions.axisY.offset.y = -1;
 
     Chartist.plugins = Chartist.plugins || {};
-    Chartist.plugins.ctAxisTitle = function (options) {
+    Chartist.plugins.axisTitle = function (options) {
 
         options = Chartist.extend({}, defaultOptions, options);
 
-        return function ctAxisTitle(chart) {
+        return function axisTitle(chart) {
 
             chart.on('created', function (data) {
 
-                if (!options.axisX.axisTitle && !options.axisY.axisTitle) {
-                    throw new Error('ctAxisTitle plugin - You must provide at least one axis title');
+                if (!options.axisX.title && !options.axisY.title) {
+                    throw new Error('Chartist axisTitle plugin - You must provide at least one axis title');
                 } else if (!data.axisX && !data.axisY) {
-                    throw new Error('ctAxisTitle plugin can only be used on charts that have at least one axis');
+                    throw new Error('Chartist axisTitle plugin can only be used on charts that have at least one axis');
                 }
 
                 var xPos;
@@ -49,7 +57,7 @@
                 var title;
 
                 //position axis X title
-                if (options.axisX.axisTitle && data.axisX) {
+                if (options.axisX.title && data.axisX) {
 
                     xPos = (data.axisX.axisLength / 2) + data.options.axisY.offset + data.options.chartPadding.left;
 
@@ -64,8 +72,8 @@
                     }
 
                     title = new Chartist.Svg("text");
-                    title.addClass(options.axisX.axisClass);
-                    title.text(options.axisX.axisTitle);
+                    title.addClass(options.axisX.className);
+                    title.text(getTitle(options.axisX.title));
                     title.attr({
                         x: xPos + options.axisX.offset.x,
                         y: yPos + options.axisX.offset.y,
@@ -77,7 +85,7 @@
                 }
 
                 //position axis Y title
-                if (options.axisY.axisTitle && data.axisY) {
+                if (options.axisY.title && data.axisY) {
                     xPos = 0;
 
 
@@ -94,8 +102,8 @@
                     var transform = 'rotate(' + (options.axisY.flipTitle ? -90 : 90) + ', ' + xPos + ', ' + yPos + ')';
 
                     title = new Chartist.Svg("text");
-                    title.addClass(options.axisY.axisClass);
-                    title.text(options.axisY.axisTitle);
+                    title.addClass(options.axisY.className);
+                    title.text(getTitle(options.axisY.title));
                     title.attr({
                         x: xPos + options.axisY.offset.x,
                         y: yPos + options.axisY.offset.y,

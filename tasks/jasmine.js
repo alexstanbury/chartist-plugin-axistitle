@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     dist: {
       src: [
         'bower_components/chartist/dist/chartist.js',
-        '<%= pkg.config.src %>/scripts/chartist-plugin-axistitle.js'
+        '<%= pkg.config.src %>/chartist-plugin-axistitle.js'
       ],
       options: {
         specs: '<%= pkg.config.test %>/spec/**/spec-*.js',
