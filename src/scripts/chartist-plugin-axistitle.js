@@ -1,6 +1,6 @@
 /**
  * Chartist.js plugin to display a title for 1 or 2 axes.
- * version 0.0.2
+ * version 0.0.3
  * author: alex stanbury
  */
 (function(root, factory) {
@@ -11,7 +11,7 @@
         });
     } else if (typeof exports === 'object') {
         // Node. Does not work with strict CommonJS, but
-        // only CommonJS-like enviroments that support module.exports,
+        // only CommonJS-like environments that support module.exports,
         // like Node.
         module.exports = factory(require('chartist'));
     } else {
