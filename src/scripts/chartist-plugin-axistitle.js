@@ -1,3 +1,8 @@
+/**
+ * Chartist.js plugin to display a title for 1 or 2 axes.
+ * version 0.0.2
+ * author: alex stanbury
+ */
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -10,6 +15,7 @@
     // like Node.
     module.exports = factory(require('chartist'));
   } else {
+    /* global Chartist */
     root['Chartist.plugins.ctAxisTitle'] = factory(root.Chartist);
   }
 }(this, function(Chartist) {
