@@ -1,6 +1,6 @@
 {
   "name": "chartist-plugin-axistitle",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": [
     "./dist/chartist-plugin-axistitle.min.js"
   ],
