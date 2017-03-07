@@ -27,7 +27,7 @@ var defaultOptions = {
   textAnchor: 'middle',
 
   // Whether to flip the direction of the text. Note - This can only be used on axis Y.
-  flipText : false
+  flipTitle : false
   
 };
 ```
