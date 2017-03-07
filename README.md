@@ -11,10 +11,13 @@ http://gionkunz.github.io/chartist-js/index.html
 
 ```javascript
 var defaultOptions = {
-  // The title to be displayed on the axis. If at least one axis title is not supplied then an error is thrown. This can also be passed a function to enable simple updating of the title if your chart data changes.
+  // The title to be displayed on the axis. If at least one axis title is not supplied then an error is thrown. 
+  // This can also be passed a function to enable simple updating of the title if your chart data changes.
   axisTitle: '',
   
-  // One or more class names to be added to the axis title. Multiple class names should be separated by a space. This can also be passed a function to enable simple updating of the classes if your chart data changes.
+  // One or more class names to be added to the axis title. 
+  // Multiple class names should be separated by a space. 
+  // This can also be passed a function to enable simple updating of the classes if your chart data changes.
   axisClass: 'ct-axis-title',
   
   // How much to offset the title by. 
