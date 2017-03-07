@@ -1,6 +1,7 @@
 /**
- * Chartist.js plugin to display a title for 1 or 2 axises.
- * version 1.0.0 by alex stanbury
+ * Chartist.js plugin to display a title for 1 or 2 axes.
+ * version 0.0.2
+ * author: alex stanbury
  */
 /* global Chartist */
 (function (window, document, Chartist) {
