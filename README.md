@@ -1,7 +1,6 @@
 # Axis title plugin for Chartist.js
 
-This plugin allows the creation and placement of axis titles. The plugin will throw an error if it is applied to a chart
-that contains no axes, such as a Pie chart.
+This plugin allows the creation and placement of axis titles. The plugin will throw an error if it is applied to a chart that contains no axes, such as a Pie chart.
 
 In order to use it, you will need to include the excellent charting library Chartist.js in your page.
 
@@ -37,7 +36,7 @@ var defaultOptions = {
 ```javascript
 var chart = new Chartist.Line('.ct-chart', {
             labels: ['0-15', '16-30', '31-45', '46-60', '61-75', '76-90', '91-105', '106-120'],
-                series: [1, 3, 7, 12, 1, 2, 1, 0]
+                series: [[1, 3, 7, 12, 1, 2, 1, 0]]
             }, {
                 chartPadding: {
                     top: 20,
@@ -72,3 +71,7 @@ var chart = new Chartist.Line('.ct-chart', {
                 ]
             });
 ```
+
+## example
+
+Run/edit the example.html file to see the plugin in action
