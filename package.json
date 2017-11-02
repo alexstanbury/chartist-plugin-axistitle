@@ -1,7 +1,7 @@
 {
   "name": "chartist-plugin-axistitle",
   "description": "Axis Title Plugin for Chartist.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Alex Stanbury",
   "homepage": "https://alexstanbury.github.io/chartist-plugin-axistitle",
   "repository": {
