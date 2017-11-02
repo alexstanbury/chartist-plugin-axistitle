@@ -16,7 +16,7 @@
 
   /**
    * Chartist.js plugin to display a title for 1 or 2 axes.
-   * version 0.0.3
+   * version 0.0.4
    * author: alex stanbury
    */
   /* global Chartist */
@@ -31,12 +31,12 @@
               y: 0
           },
           textAnchor: 'middle',
-          flipText: false
+          flipTitle: false
       };
 
       var defaultOptions = {
-          xAxis: axisDefaults,
-          yAxis: axisDefaults
+          axisX: axisDefaults,
+          axisY: axisDefaults
       };
 
       var getTitle = function (title) {
@@ -72,17 +72,18 @@
                       );
                   }
 
-                  var xPos;
-                  var yPos;
-                  var title;
+                  var xPos,
+                      yPos,
+                      title,
+                      chartPadding = Chartist.normalizePadding(data.options.chartPadding); // normalize the padding in case the full padding object was not passed into the options
 
                   //position axis X title
                   if (options.axisX.axisTitle && data.axisX) {
 
                       xPos = (data.axisX.axisLength / 2) + data.options.axisY.offset +
-                          data.options.chartPadding.left;
+                          chartPadding.left;
 
-                      yPos = data.options.chartPadding.top;
+                      yPos = chartPadding.top;
 
                       if (data.options.axisY.position === 'end') {
                           xPos -= data.options.axisY.offset;
@@ -110,7 +111,7 @@
                       xPos = 0;
 
 
-                      yPos = (data.axisY.axisLength / 2) + data.options.chartPadding
+                      yPos = (data.axisY.axisLength / 2) + chartPadding
                               .top;
 
                       if (data.options.axisX.position === 'start') {
