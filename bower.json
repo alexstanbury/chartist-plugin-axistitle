@@ -1,9 +1,7 @@
 {
   "name": "chartist-plugin-axistitle",
-  "version": "0.0.4",
-  "main": [
-    "./dist/chartist-plugin-axistitle.min.js"
-  ],
+  "version": "0.0.5",
+  "main": ["./dist/chartist-plugin-axistitle.min.js"],
   "dependencies": {
     "chartist": "~0.10.1"
   },

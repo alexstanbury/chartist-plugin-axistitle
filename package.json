@@ -1,7 +1,7 @@
 {
   "name": "chartist-plugin-axistitle",
   "description": "Axis Title Plugin for Chartist.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Alex Stanbury",
   "homepage": "https://alexstanbury.github.io/chartist-plugin-axistitle",
   "repository": {
@@ -11,22 +11,15 @@
   "bugs": {
     "url": "https://github.com/alexstanbury/chartist-plugin-axistitle/issues"
   },
-  "keywords": [
-    "chartist",
-    "plugin"
-  ],
-  "files": [
-    "dist",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ],
+  "keywords": ["chartist", "plugin"],
+  "files": ["dist", "LICENSE", "package.json", "README.md"],
   "main": "dist/chartist-plugin-axistitle.js",
   "browser": "dist/chartist-plugin-axistitle.js",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/alexstanbury/chartist-plugin-axistitle/blob/master/LICENSE"
+      "url":
+        "https://github.com/alexstanbury/chartist-plugin-axistitle/blob/master/LICENSE"
     }
   ],
   "dependencies": {},
@@ -52,7 +45,8 @@
     "test": "grunt test"
   },
   "config": {
-    "banner": "/* chartist-plugin-axistitle <%= pkg.version %>\n * Copyright © <%= year %> Alex Stanbury\n * Free to use under the WTFPL license.\n * http://www.wtfpl.net/\n */\n",
+    "banner":
+      "/* chartist-plugin-axistitle <%= pkg.version %>\n * Copyright © <%= year %> Alex Stanbury\n * Free to use under the WTFPL license.\n * http://www.wtfpl.net/\n */\n",
     "src": "src",
     "dist": "dist",
     "tmp": ".tmp",
