@@ -6,6 +6,16 @@ In order to use it, you will need to include the excellent charting library Char
 
 http://gionkunz.github.io/chartist-js/index.html
 
+## Installation
+
+Install using npm:
+
+`npm install chartist-plugin-axistitle`
+
+Or using bower
+
+`bower install chartist-plugin-axistitle`
+
 
 ## Available options and their defaults
 
