@@ -94,4 +94,8 @@ var chart = new Chartist.Line(
 
 ## Example
 
-Install using `npm install` then run/edit the example.html file to see the plugin in action
+Install using `npm install` then run/edit the example.html file to see the plugin in action.
+
+## Build
+
+Use `npm run build` to build a minimised version.
