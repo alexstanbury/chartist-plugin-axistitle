@@ -4,7 +4,7 @@
  * author: alex stanbury
  */
 /* global Chartist */
-(function (window, document, Chartist) {
+(function (Chartist) {
     'use strict';
 
     var axisDefaults = {
@@ -123,4 +123,4 @@
             });
         };
     };
-}(window, document, Chartist));
+}(Chartist));
